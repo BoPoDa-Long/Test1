@@ -1,4 +1,5 @@
-print("Hello World")
+k='"Hello World"'
+print(k)
 def gfd():
     a=7
     return a
