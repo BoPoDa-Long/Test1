@@ -1,18 +1,8 @@
-menu = ["wraps", "sandwiches", "soup", "salad"]
-x=0
-for i in menu:
-    x+=1
-    print(x,i)
-age = int(input("How old are you now?"))
-print("How old will you be next year?")
-print(age + 1)
+my_lucky_number = 7
+guess = int(input("Guess my lucky number! I think it is: "))
+while my_lucky_number!=guess:
+     guess = int(input("Oops! Not it. Try again: "))
+print("Congrats! You guessed it.")
 
-k='"Hello World"'
-print(k)
-def gfd():
-    a=7
-    return a
-a=gfd()
-b=8
-c=a+b
-print(c)
+hex(my_lucky_number)
+
