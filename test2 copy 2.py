@@ -3,8 +3,9 @@ eng_ukr = """`1234567890-=qwertyuiop[]asdfghjkl;'zxcvbnm,./~!@#$%^&*()_+QWERTYUI
 ukr_eng = """'1234567890-=йцукенгшщзхїфівапролджєячсмитьбю.₴!"№;%:?*()_+ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄЯЧСМИТЬБЮ, """
 all_numbers = """0123456789"""
 all_symbols = """`-=[];',./~!@#$%^&*()_+{}:"<>? """
-with open("Перекладач.txt", "w") as f:
-    f.write("")
+#для (стирання) створення нового файлу: 2 рядки
+# with open("log_book.txt", "w") as f:
+#     f.write("")
 def translator():
     if any(s.isalpha() and s in eng_ukr for s in text):
         return"".join([ukr_eng[eng_ukr.index(symbols)] if symbols in eng_ukr else symbols for symbols in text])
@@ -16,8 +17,21 @@ def translator():
         return text
     else:
         return "Ви ввели не коректне значення, або використовуєте мову якої немає в словниках програми!"
-while text.lower() not in ("stop","стоп"):
-    
-    print("Результат:",translator())
-    text = str(input("Введіть наступний текст для перекладу: "))
-print("Програму завершено!\The program is completed!")
+if text.lower() not in ("stop","стоп"):
+    with open("log_book.txt", "a", encoding="utf-8") as f:
+        f.write("\nНове відкриття програми:")
+    k = 0
+    while text.lower() not in ("stop","стоп"):
+        k += 1
+        new_text = translator()
+        print(f"Результат: {new_text}")
+        with open("log_book.txt", "a", encoding="utf-8") as f:
+            f.write(f"\n    Запис №{k}:\n        {str(new_text)}")
+        text = str(input("Введіть наступний текст для перекладу: "))
+    print("Програму завершено!\The program is completed!")
+    with open("log_book.txt", "a", encoding="utf-8") as f:
+        f.write("\nПрограму закрито!\n"+"-"*30)
+else:
+    print("Програму завершено!\The program is completed!")
+    with open("log_book.txt", "a", encoding="utf-8") as f:
+        f.write("\nПрограму закрито!\n"+"-"*30)
