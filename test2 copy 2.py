@@ -23,10 +23,12 @@ if text.lower() not in ("stop","стоп"):
     k = 0
     while text.lower() not in ("stop","стоп"):
         k += 1
+        with open("log_book.txt", "a", encoding="utf-8") as f:
+            f.write(f"\n    Запис №{k}:\n    {str(text)} --> ")
         new_text = translator()
         print(f"Результат: {new_text}")
         with open("log_book.txt", "a", encoding="utf-8") as f:
-            f.write(f"\n    Запис №{k}:\n        {str(new_text)}")
+            f.write(f"{str(new_text)}")
         text = str(input("Введіть наступний текст для перекладу: "))
     print("Програму завершено!\The program is completed!")
     with open("log_book.txt", "a", encoding="utf-8") as f:
